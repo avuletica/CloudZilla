@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -27,10 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    # Third party-apps
+    'crispy_forms',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,9 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My apps
     'cloud',
-    # Third party-apps
-    'crispy_forms',
-    'rest_framework',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -75,7 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -85,7 +85,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -105,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -119,8 +117,36 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "cloud", "static_files"),
+]
+
+# Crispy forms tags settings
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# --- DJANGO REGISTRATION REDUX SETTINGS START ---
+
+# One-week activation window; you may, of course, use a different value.
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_OPEN = True
+
+LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_URL = '/accounts/login'
+
+SITE_ID = 1
+# --- DJANGO REGISTRATION REDUX SETTINGS END ---
+
+# Config for sending mail from our official e-mail address
+# Check source/settings_sensitive_template.txt for more info
+
+settings_sensitive = BASE_DIR + '/source/settings_sensitive.py'
+if os.path.isfile(settings_sensitive):
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    from settings_sensitive import *
