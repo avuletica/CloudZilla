@@ -125,7 +125,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "cloud", "static_files"),
+    os.path.join(BASE_DIR, "static_files"),
 ]
 
 # Crispy forms tags settings
@@ -146,7 +146,7 @@ SITE_ID = 1
 # Config for sending mail from our official e-mail address
 # Check source/settings_sensitive_template.txt for more info
 
-settings_sensitive = BASE_DIR + '/source/settings_sensitive.py'
+settings_sensitive = BASE_DIR + '/src/settings_sensitive.py'
 if os.path.isfile(settings_sensitive):
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     from settings_sensitive import *

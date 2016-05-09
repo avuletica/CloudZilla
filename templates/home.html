@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div>test</div>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+    {% include 'boostrap-jq.html' %}
+
+    <div>
+        {% include 'video-background.html' %}
+
+        <div class="btn-group-vertical">
+            <a href="/accounts/login">
+                <button class="btn-login btn btn-custom">LOGIN</button>
+            </a>
+            <a href="/accounts/register">
+                <button class="btn-join btn btn-custom">JOIN</button>
+            </a>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,139 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/*--video-background--*/
+.video-bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/*--home-buttons--*/
+.btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-group-vertical {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: #ffffff;
+    border-radius: 25px;
+    font: 400 1.2em/50px ProximaNova-Extrabld, sans-serif;
+    padding: 0 32px;
+    color: #013056;
+    font-weight: bolder;
+}
+
+.btn-custom:hover {
+    background-color: #013056;
+    color: #ffffff;
+}
+
+/*--home-login-form--*/
+.wrap-login {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    padding: 2em;
+    border: 1px solid;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    animation: fadein 2s;
+}
+
+.wrap-login a {
+    color: white;
+}
+
+/*--home-register-form--*/
+.wrap-registration {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    padding: 2em;
+    border: 1px solid;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    animation: fadein 2s;
+}
+
+.wrap-registration a {
+    color: white;
+}
+
+/*--home-reset-form--*/
+.wrap-reset-registration {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    padding: 2em;
+    border: 1px solid;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    animation: fadein 2s;
+}
+
+.wrap-reset-registration a {
+    color: white;
+}
+
+/*--fade-in--*/
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
