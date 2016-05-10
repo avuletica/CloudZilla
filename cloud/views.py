@@ -1,12 +1,22 @@
-from django.shortcuts import render
-from django.conf import settings
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
-
-# Create your views here.
 
 def home(request):
     context = {
-        "title": "eLearning",
+        "title": "CloudZilla",
+    }
+    if request.user.is_authenticated():
+        return redirect(reverse('dashboard'))
+    else:
+        return render(request, "home.html", context)
+
+
+@login_required
+def dashboard(request):
+    context = {
+        "title": "Dashboard",
     }
 
-    return render(request, "home.html", context)
+    return render(request, "dashboard.html", context)

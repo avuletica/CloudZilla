@@ -4,17 +4,28 @@
 
 {% block content %}
     {% include 'boostrap-jq.html' %}
+    {% include 'video-background.html' %}
 
-    <div>
-        {% include 'video-background.html' %}
+    <div class="home-title">
+        <h3>File Storage Site</h3>
+        <div class="home-img-wrap">
+            <img src="{% static 'images/round-white.png' %}">
+            <img src="{% static 'images/round-white.png' %}">
+            <img src="{% static 'images/round-white.png' %}">
+        </div>
+        <h2>CloudZilla</h2>
+    </div>
 
+    <div class="home-buttons">
         <div class="btn-group-vertical">
-            <a href="/accounts/login">
+            <a href="{% url 'auth_login' %}">
                 <button class="btn-login btn btn-custom">LOGIN</button>
             </a>
-            <a href="/accounts/register">
+            <a href="{% url 'registration_register' %}">
                 <button class="btn-join btn btn-custom">JOIN</button>
             </a>
         </div>
+    </div>
+
 
 {% endblock %}

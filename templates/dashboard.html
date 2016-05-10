@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+    <div>Welcome {{ request.user }}</div>
+    <a href="{% url 'auth_logout' %}">Logout</a>
+
+{% endblock %}

@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block content %}
-  <div class="container" style="text-align: center">
-    <h3>You have successfully logged out.</h3>
-    <p><a href="{% url 'auth_login' %}">Login</a></p>
-  </div>
+    {% include 'boostrap-jq.html' %}
+    {% include 'video-background.html' %}
+    <div class="wrap-logout">
+        <h3>You have successfully logged out.</h3>
+        <a href="{% url 'auth_login' %}">
+            <button class="btn btn-primary">Login</button>
+        </a>
+    </div>
 {% endblock %}
