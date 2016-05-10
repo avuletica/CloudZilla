@@ -3,7 +3,34 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div>Welcome {{ request.user }}</div>
-    <a href="{% url 'auth_logout' %}">Logout</a>
+    {% include 'boostrap-jq.html' %}
+    <script src="{% static "javascripts/dashboard.js" %}"></script>
+    <link href="{% static 'stylesheets/dashboard.css' %}" rel="stylesheet"/>
+
+    <div class="container dashboard-wrap ">
+        <div class="row row-wrap">
+            <div class="col-xs-2 sidebar-content">
+                <ul class="sidebar-nav">
+                    <li>
+                        Welcome {{ request.user }}
+                    </li>
+                    <li>
+                        <a href="#" class="glyphicon glyphicon-user"> Profile</a>
+                    </li>
+                    <li>
+                        <a href="#" class="glyphicon glyphicon-plus"> Upload</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'auth_logout' %}" class="glyphicon glyphicon-off"> Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-10 file-content">
+                File-content
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
+
