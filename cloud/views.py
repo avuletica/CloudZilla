@@ -34,7 +34,13 @@ def dashboard(request):
     if file_upload_form.is_valid() and 'add_file' in request.POST:
         instance = file_upload_form.save(commit=False)
         instance.file_fk = User.objects.get(id=request.user.id)
-        instance.filename = file_upload_form.cleaned_data.get("file")
+        minify_file_name = file_upload_form.cleaned_data.get("file")
+        minify_file_name = str(minify_file_name)
+        text = minify_file_name
+        if len(minify_file_name) > 20:
+            minify_file_name = text[0:10] + '...' + text[-10:]
+
+        instance.filename = minify_file_name
         instance.save()
         return redirect(reverse('dashboard'))
 
