@@ -1,7 +1,21 @@
 {% load staticfiles %}
 
 <link href="{% static 'stylesheets/home.css' %}" rel="stylesheet"/>
-<video class="video-bg" autoplay muted loop>
+<video class="video-bg" id='video' autoplay muted loop>
     <source src="{% static "videos/bgvideo.webm" %}" type="video/webm">
     Your browser does not support the video tag.
 </video>
+
+<script type="text/javascript">
+    var myVideo = document.getElementById('video');
+    if (typeof myVideo.loop == 'boolean') { // loop supported
+        myVideo.loop = true;
+    }
+    else { // loop property not supported
+        myVideo.on('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+    }
+    myVideo.play();
+</script>

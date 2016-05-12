@@ -136,6 +136,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # One-week activation window; you may, of course, use a different value.
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
 
 LOGIN_REDIRECT_URL = '/dashboard'
 LOGIN_URL = '/accounts/login'
