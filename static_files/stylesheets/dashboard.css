@@ -3,14 +3,31 @@ html, body {
     height: 100%;
 
     background-image: url('../images/bg.jpg');
-    overflow-y: hidden;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
-/* Sidebar styling - the entire ul list */
+/*--dashboard-wrap--*/
+.dashboard-wrap {
+    margin-top: 5%;
+    background-color: #FEFEFB;
+
+    /* border&shadow */
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 8px 8px 8px #A4CCE8;
+    -webkit-box-shadow: 8px 8px 8px #A4CCE8;
+    box-shadow: 8px 8px 8px #A4CCE8;
+}
+
+/*--sidebar-wrap--*/
+.sidebar-wrap {
+    padding: 0;
+}
+
+/*--Sidebar styling - the entire ul list--*/
 .sidebar-nav {
     padding: 0;
     list-style: none;
@@ -25,13 +42,15 @@ html, body {
 .sidebar-nav li:first-child {
     border-bottom: 2px solid #E6E6E6;
     margin-bottom: 0.5em;
+    color: #337ab7;
+    font-size: 1.3em;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
     text-align: center;
-    color: #000000;
+    color: #337ab7;
     font-weight: bold;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -39,30 +58,53 @@ html, body {
 
 .sidebar-nav li a:hover {
     background: #0581D8;
-    color: white;
+    color: white !important;
 }
 
-.dashboard-wrap {
-    margin-top: 5%;
-    background-color: #FEFEFB;
-
-    /* border&shadow */
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: 8px 8px 8px #A4CCE8;
-    -webkit-box-shadow: 8px 8px 8px #A4CCE8;
-    box-shadow: 8px 8px 8px #A4CCE8;
-}
-
-.col-xs-2 {
-    padding: 0;
-}
-
-.col-xs-10 {
+.file-wrap {
+    padding-left: 4em;
     border-left: 2px solid #E6E6E6;
 }
 
-.active-sidebar {
-    background: #E4551D;
-    color: white !important;
+.file-wrap h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #337ab7;
+}
+
+.file-box {
+    margin-top: 1em;
+    word-break: break-all;
+}
+
+.upload-button {
+    cursor: pointer;
+}
+
+.upload-widget {
+    display: none;
+}
+
+.form-upload {
+    margin-bottom: 1em;
+}
+
+.row-wrap {
+    min-height: 600px;
+}
+
+.control-label {
+    display: none;
+}
+
+#id_file {
+   position: relative;
+    overflow: hidden;
+    float: left;
+    clear: left;
+    margin-right: 1em;
+}
+
+.controls input {
+    color: blue !important;
 }

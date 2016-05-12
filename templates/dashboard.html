@@ -9,7 +9,7 @@
 
     <div class="container dashboard-wrap ">
         <div class="row row-wrap">
-            <div class="col-xs-2 sidebar-content">
+            <div class="col-xs-2 sidebar-wrap">
                 <ul class="sidebar-nav">
                     <li>
                         Welcome {{ request.user }}
@@ -18,7 +18,7 @@
                         <a href="#" class="glyphicon glyphicon-user"> Profile</a>
                     </li>
                     <li>
-                        <a href="#" class="glyphicon glyphicon-plus"> Upload</a>
+                        <a class="glyphicon glyphicon-plus upload-button"> Upload</a>
                     </li>
                     <li>
                         <a href="{% url 'auth_logout' %}" class="glyphicon glyphicon-off"> Logout</a>
@@ -26,8 +26,32 @@
                 </ul>
             </div>
 
-            <div class="col-xs-10 file-content">
-                File-content
+
+            <div class="col-xs-10 file-wrap">
+
+                <div class="upload-widget">
+                    <form class="form-upload fileUpload" method='POST' action='' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ file_upload_form|crispy }}
+                        <input class='btn btn-primary btn-xs' type='submit' name="add_file" value='Upload'/>
+                    </form>
+                </div>
+
+                <div class="col-xs-12">
+                    <h2>My files</h2>
+                    <hr/>
+                    {% for item in files %}
+                        <div class="col-xs-4 file-box">
+                            <div>
+                                <a class="glyphicon glyphicon-file"></a>
+                                <a href='{{ item.file.url }}'>{{ item.filename }}</a>
+                                <a href="{% url 'delete_file' item.id %}" class="glyphicon glyphicon-trash"></a>
+                                <a href="{% url 'download_file' item.id %}" class="glyphicon glyphicon-download"></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
             </div>
         </div>
     </div>
