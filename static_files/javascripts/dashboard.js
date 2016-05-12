@@ -14,6 +14,7 @@ $(document).ready(function () {
     }
 
     $('.form-upload').submit(function () {
+        var uploadWidget = $(".upload-widget");
         var $upload = $.trim($('#id_file').val());
 
         // Check if empty of not
@@ -21,6 +22,8 @@ $(document).ready(function () {
             alert("Please select file to upload");
             return false;
         }
+        else
+            uploadWidget.hide();
     });
 
     /* Change label text to file name on event */

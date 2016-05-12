@@ -92,6 +92,7 @@ html, body {
 .upload-widget {
     text-align: center;
     margin-top: 2em;
+    display: none;
 }
 
 .control-label {
