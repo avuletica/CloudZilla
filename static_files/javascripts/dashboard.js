@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     function handleUploadClick() {
         var uploadWidget = $(".upload-widget");
-        uploadWidget.show();
+        uploadWidget.fadeIn();
     }
 
     $('.form-upload').submit(function () {
