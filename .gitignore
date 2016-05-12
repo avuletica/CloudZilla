@@ -1,3 +1,5 @@
 .idea/
 db.*
 *.pyc
+media
+src/settings_sensitive.py
