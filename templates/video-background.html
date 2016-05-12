@@ -12,7 +12,7 @@
         myVideo.loop = true;
     }
     else { // loop property not supported
-        myVideo.on('ended', function() {
+        myVideo.on('ended', function () {
             this.currentTime = 0;
             this.play();
         }, false);

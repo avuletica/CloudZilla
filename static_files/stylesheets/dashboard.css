@@ -62,11 +62,41 @@ html, body {
     color: white !important;
 }
 
+.profile-button {
+    cursor: pointer;
+}
+
+.profile-widget {
+    display: none;
+    text-align: center;
+    border-left: 2px solid #E6E6E6;
+}
+
+.profile-widget h5 {
+    color: #0581D8;
+    font-weight: bolder;
+}
+
+.upload-button {
+    cursor: pointer;
+}
+
+.upload-widget {
+    text-align: center;
+    margin-top: 2em;
+    display: none;
+}
+
+.form-upload-button {
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #0581D8;
+}
+
 /*--right column wrap--*/
 .file-wrap {
     padding-left: 2em;
     padding-right: 2em;
-
     border-left: 2px solid #E6E6E6;
 }
 
@@ -85,16 +115,7 @@ html, body {
     min-height: 600px;
 }
 
-.upload-button {
-    cursor: pointer;
-}
-
-.upload-widget {
-    text-align: center;
-    margin-top: 2em;
-    display: none;
-}
-
+/*--Django field/label/input--*/
 .control-label {
     display: none;
 }
@@ -103,17 +124,12 @@ html, body {
     display: none;
 }
 
-.form-upload-button {
-    font-size: 1em;
-    font-weight: 700;
-    background-color: #0581D8;
-}
-
 #id_file {
     display: none;
 
 }
 
+/*--custom file label--*/
 #file-label {
     font-size: 1.25em;
     font-weight: 700;

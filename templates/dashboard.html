@@ -9,13 +9,13 @@
 
     <div class="container dashboard-wrap ">
         <div class="row row-wrap">
-            <div class="col-xs-2 sidebar-wrap">
+            <div class="col-xs-12 col-sm-2 sidebar-wrap">
                 <ul class="sidebar-nav">
                     <li>
                         Welcome {{ request.user }}
                     </li>
                     <li>
-                        <a href="#" class="glyphicon glyphicon-user"> Profile</a>
+                        <a class="glyphicon glyphicon-user profile-button"> Profile</a>
                     </li>
                     <li>
                         <a class="glyphicon glyphicon-plus upload-button"> Upload</a>
@@ -33,10 +33,22 @@
                                    value='Upload'/>
                         </form>
                     </div>
+
+                    <div class="profile-widget">
+                        <hr/>
+                        <h4>Change password</h4>
+                        <form method='POST' action=''>
+                            {% csrf_token %}
+                            {{ password_form|crispy }}
+                            <input class='btn btn-primary btn-xs' type='submit' name="Update"
+                                   value='Change Password'/>
+                        </form>
+                    </div>
                 </ul>
             </div>
 
-            <div class="col-xs-10 file-wrap">
+
+            <div class="col-xs-12 col-sm-10 file-wrap">
                 <h2>My files</h2>
                 <hr/>
                 <div class="col-xs-12">
@@ -46,7 +58,8 @@
                                 <a class="glyphicon glyphicon-file"></a>
                                 <a href='{{ item.file.url }}'>{{ item.filename }}</a>
                                 <a href="{% url 'delete_file' item.id %}" class="glyphicon glyphicon-trash"></a>
-                                <a href="{% url 'download_file' item.id %}" class="glyphicon glyphicon-download"></a>
+                                <a href="{% url 'download_file' item.id %}"
+                                   class="glyphicon glyphicon-download-alt"></a>
                             </div>
                         </div>
                     {% endfor %}

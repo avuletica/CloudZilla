@@ -4,9 +4,10 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
+from django.contrib.auth.hashers import make_password
 
 from .models import FileUpload
-from .forms import FileUploadForm
+from .forms import FileUploadForm, UserPasswordForm
 from src import settings
 import os
 
@@ -23,12 +24,14 @@ def home(request):
 
 @login_required
 def dashboard(request):
+    password_form = UserPasswordForm(request.POST or None, instance=request.user)
     files = FileUpload.objects.filter(file_fk=request.user.id)
     file_upload_form = FileUploadForm(request.POST or None, request.FILES or None)
     context = {
         "title": "Dashboard",
         "files": files,
         "file_upload_form": file_upload_form,
+        "password_form": password_form,
     }
 
     if file_upload_form.is_valid() and 'add_file' in request.POST:
@@ -42,6 +45,14 @@ def dashboard(request):
 
         instance.filename = minify_file_name
         instance.save()
+        return redirect(reverse('dashboard'))
+
+    if password_form.is_valid() and 'Update' in request.POST:
+        instance = password_form.save(commit=False)
+        new_password = password_form.cleaned_data.get("password")
+        instance.set_password(new_password)
+        instance.save()
+
         return redirect(reverse('dashboard'))
 
     return render(request, "dashboard.html", context)
