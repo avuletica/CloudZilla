@@ -23,23 +23,23 @@
                     <li>
                         <a href="{% url 'auth_logout' %}" class="glyphicon glyphicon-off"> Logout</a>
                     </li>
+                    <div class="upload-widget">
+                        <hr/>
+                        <form class="form-upload fileUpload" method='POST' action='' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ file_upload_form|crispy }}
+                            <label id="file-label" for="id_file" class="col-xs-12">Choose a file</label>
+                            <input class='btn btn-primary btn-xs form-upload-button' type='submit' name="add_file"
+                                   value='Upload'/>
+                        </form>
+                    </div>
                 </ul>
             </div>
 
-
             <div class="col-xs-10 file-wrap">
-
-                <div class="upload-widget">
-                    <form class="form-upload fileUpload" method='POST' action='' enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ file_upload_form|crispy }}
-                        <input class='btn btn-primary btn-xs' type='submit' name="add_file" value='Upload'/>
-                    </form>
-                </div>
-
+                <h2>My files</h2>
+                <hr/>
                 <div class="col-xs-12">
-                    <h2>My files</h2>
-                    <hr/>
                     {% for item in files %}
                         <div class="col-xs-4 file-box">
                             <div>
@@ -51,7 +51,6 @@
                         </div>
                     {% endfor %}
                 </div>
-
             </div>
         </div>
     </div>

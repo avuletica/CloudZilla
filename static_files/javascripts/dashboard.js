@@ -10,7 +10,31 @@ $(document).ready(function () {
 
     function handleUploadClick() {
         var uploadWidget = $(".upload-widget");
-        $(".control-label").val('Bew');
         uploadWidget.show();
     }
+
+    $('.form-upload').submit(function () {
+        var $upload = $.trim($('#id_file').val());
+
+        // Check if empty of not
+        if ($upload === '') {
+            alert("Please select file to upload");
+            return false;
+        }
+    });
+
+    /* Change label text to file name on event */
+    var fileInput = $('.controls input');
+    fileInput.on('change', handleFileChange);
+
+    function handleFileChange() {
+        /* Minify file name */
+        var fileName = fileInput.val();
+        var res = fileName.split('\\').pop();
+        res = res.substring(0, 6) + '...' + res.slice(-6);
+
+        var fileLabel = $('#file-label');
+        fileLabel.html(res);
+    }
+
 });
