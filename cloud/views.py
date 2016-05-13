@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth import update_session_auth_hash, authenticate, login
 
 from .models import FileUpload
 from .forms import FileUploadForm, UserPasswordForm
@@ -24,6 +24,7 @@ def home(request):
 
 @login_required
 def dashboard(request):
+    user = User.objects.get(username=request.user)
     password_form = UserPasswordForm(request.POST or None, instance=request.user)
     files = FileUpload.objects.filter(file_fk=request.user.id)
     file_upload_form = FileUploadForm(request.POST or None, request.FILES or None)
@@ -45,15 +46,15 @@ def dashboard(request):
 
         instance.filename = minify_file_name
         instance.save()
-        return redirect(reverse('dashboard'))
 
-    if password_form.is_valid() and 'Update' in request.POST:
+    if password_form.is_valid() and 'new_pass' in request.POST:
         instance = password_form.save(commit=False)
         new_password = password_form.cleaned_data.get("password")
         instance.set_password(new_password)
         instance.save()
-
-        return redirect(reverse('dashboard'))
+        username = request.user
+        user = authenticate(username=username, password=new_password)
+        login(request, user)
 
     return render(request, "dashboard.html", context)
 

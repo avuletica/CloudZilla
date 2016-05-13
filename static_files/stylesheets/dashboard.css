@@ -50,11 +50,12 @@ html, body {
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    text-align: center;
+    text-align: left;
     color: #337ab7;
     font-weight: bold;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    padding-left: 1em;
 }
 
 .sidebar-nav li a:hover {
@@ -68,13 +69,14 @@ html, body {
 
 .profile-widget {
     display: none;
-    text-align: center;
-    border-left: 2px solid #E6E6E6;
+    text-align: left;
+    padding: 0 0.5em;
 }
 
 .profile-widget h5 {
     color: #0581D8;
     font-weight: bolder;
+
 }
 
 .upload-button {

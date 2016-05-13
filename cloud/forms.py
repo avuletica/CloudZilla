@@ -11,14 +11,17 @@ class FileUploadForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(FileUploadForm, self).__init__(*args, **kwargs)
         self.fields['file'].label = "Choose a file"
+        self.fields['file'].required = False
 
 
 class UserPasswordForm(forms.ModelForm):
     class Meta:
         model = User
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
         fields = ['password']
 
     def __init__(self, *args, **kwargs):
         super(UserPasswordForm, self).__init__(*args, **kwargs)
-        self.initial['password'] = 'New password'
-
+        self.fields['password'].required = False
