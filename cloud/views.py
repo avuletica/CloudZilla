@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
-from django.contrib.auth import update_session_auth_hash, authenticate, login
+from django.contrib.auth import authenticate, login
 
 from .models import FileUpload
 from .forms import FileUploadForm, UserPasswordForm
