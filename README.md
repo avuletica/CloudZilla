@@ -1,6 +1,6 @@
 # Introduction
 CloudZilla is file storage web application written in python (django).
-<img src="https://github.com/Bcoolie/CloudZilla/blob/master/static_files/images/dashboard-sample.png" width="480" height="320">
+<img src="https://github.com/Bcoolie/CloudZilla/blob/master/static_files/images/dashboard-sample.png" width="800" height="400">
 
 # Installation
 Assuming you use virtualenv, follow these steps to download and run the
