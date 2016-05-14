@@ -24,7 +24,6 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    user = User.objects.get(username=request.user)
     password_form = UserPasswordForm(request.POST or None, instance=request.user)
     files = FileUpload.objects.filter(file_fk=request.user.id)
     file_upload_form = FileUploadForm(request.POST or None, request.FILES or None)
