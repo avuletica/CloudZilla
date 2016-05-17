@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
 from django.contrib.auth import authenticate, login
-
+from django.http import HttpResponse
 from .models import FileUpload
 from .forms import FileUploadForm, UserPasswordForm
 from src import settings
@@ -45,6 +45,7 @@ def dashboard(request):
 
         instance.filename = minify_file_name
         instance.save()
+        return redirect(reverse('dashboard'))
 
     if password_form.is_valid() and 'new_pass' in request.POST:
         instance = password_form.save(commit=False)
@@ -54,6 +55,7 @@ def dashboard(request):
         username = request.user
         user = authenticate(username=username, password=new_password)
         login(request, user)
+        return redirect(reverse('dashboard'))
 
     return render(request, "dashboard.html", context)
 
